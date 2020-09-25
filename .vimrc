@@ -20,11 +20,19 @@ set listchars=eol:↲,trail:-,extends:»,precedes:«,nbsp:%
 syntax enable  " syntax
 
 " mapping key
+" use space key
 let mapleader = "\<Space>"
 inoremap <Leader>jj <Esc>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
 map <leader>n :call RenameFile()<cr>
+
+" emacs keybind
+inoremap <C-a> <C-o>^
+inoremap <C-e> <C-o>$
+inoremap <C-f> <C-o>w
+inoremap <C-b> <C-o>b
+inoremap <C-d> <C-o>x
 
 " autocmd
 augroup vimrc
