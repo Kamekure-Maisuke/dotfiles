@@ -17,6 +17,7 @@ set showmatch  " Corresponding brackets
 set wildmode=list:longest  " Command Completion
 set list  " Visualizing the blank
 set listchars=tab:»-,eol:↲,trail:-,extends:»,precedes:«,nbsp:%
+set statusline=%n:\ %<%f\ %m%r%h%w[%{&fileformat}][%{has('multi_byte')&&\ &fileencoding!=''?&fileencoding:&encoding}],%c\ %P
 hi SpecialKey ctermbg=None ctermfg=59 guibg=NONE guifg=None
 set tabstop=4
 syntax enable  " syntax
@@ -35,9 +36,11 @@ noremap L g_
 inoremap <Leader>jj <Esc>
 nnoremap <Leader>w :w<CR>
 nnoremap <Leader>q :q<CR>
-nnoremap <Leader>vr :new ~/.vimrc<CR>
-nnoremap <Leader>r :source ~/.vimrc<CR>
+nnoremap <silent> <Leader>vr :new ~/.vimrc<CR>
+nnoremap <silent> <Leader>r :source ~/.vimrc<CR>
+noremap <Leader><Leader> <C-w>w
 map <leader>n :call RenameFile()<cr>
+map <Leader>a myggVG
 inoremap <C-a> <C-o>^
 inoremap <C-e> <C-o>$
 inoremap <C-f> <C-o>w
