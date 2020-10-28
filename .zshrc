@@ -8,6 +8,16 @@ alias python='python3'
 alias dockerallrm='docker stop $(docker ps -q) && docker rmi $(docker images -q) -f'
 alias allcache='sudo rm -rf /System/Library/Caches/* /Library/Caches/* ~/Library/Caches/*'
 
+# set
+setopt auto_cd
+
+# show prompt git
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats 'on branch %b'
+setopt PROMPT_SUBST
+PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
+
 # function
 gradd(){
   git remote add origin $1
@@ -40,7 +50,5 @@ autoload -Uz _zinit
 # plugin
 zinit ice wait lucid
 zinit load zdharma/fast-syntax-highlighting  # syntax highlight
-zinit ice wait lucid
-zinit load zsh-users/zsh-autosuggestions  # suggest
 zinit ice wait lucid
 zinit load djui/alias-tips  # alias
