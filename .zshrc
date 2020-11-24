@@ -1,24 +1,20 @@
-# alias
+# エイリアス
 alias ll='ls -la'
-alias gph='git push origin HEAD'
 alias de='cd ~/Desktop'
-alias cht='cht.sh '
-alias chsh='cht.sh --shell '
-alias python='python3'
 alias dockerallrm='docker stop $(docker ps -q) && docker rmi $(docker images -q) -f'
 alias allcache='sudo rm -rf /System/Library/Caches/* /Library/Caches/* ~/Library/Caches/*'
 
-# set
+# ディレクトリ移動
 setopt auto_cd
 
-# show prompt git
+# gitステータス表示
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats 'on branch %b'
 setopt PROMPT_SUBST
 PROMPT='%n in ${PWD/#$HOME/~} ${vcs_info_msg_0_} > '
 
-# function
+# 独自関数
 gradd(){
   git remote add origin $1
 }
@@ -33,6 +29,7 @@ gad(){
   git add -u $1
 }
 
+# zinitインストールデフォルト記述
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -47,8 +44,8 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 ### End of Zinit's installer chunk
 
-# plugin
+# プラグイン
 zinit ice wait lucid
-zinit load zdharma/fast-syntax-highlighting  # syntax highlight
+zinit load zdharma/fast-syntax-highlighting
 zinit ice wait lucid
-zinit load djui/alias-tips  # alias
+zinit load djui/alias-tips
