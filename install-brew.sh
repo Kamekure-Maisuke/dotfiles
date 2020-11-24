@@ -1,4 +1,4 @@
-if [[ $(which brew) ]]; then
+if [[ ! $(which brew) ]]; then
 	echo "HomeBrewがありません。インストールします。"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
