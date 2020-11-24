@@ -1,4 +1,4 @@
-" option
+" オプション
 set encoding=utf-8  " encoding
 set nobackup " not backupfile
 set noswapfile " not swapfile
@@ -22,14 +22,14 @@ hi SpecialKey ctermbg=None ctermfg=59 guibg=NONE guifg=None
 set tabstop=4
 syntax enable  " syntax
 
-" share clipboard
+" クリップボード定義
 if has("mac")
   set clipboard+=unnamed
 else
   set clipboard^=unnamedplus
 endif
 
-" mapping key
+" キーマッピング追加
 let mapleader = "\<Space>"
 nnoremap H ^
 noremap L g_
@@ -47,13 +47,9 @@ inoremap <C-f> <C-o>w
 inoremap <C-b> <C-o>b
 inoremap <C-d> <C-o>x
 
-" autocmd
-augroup vimrc
-autocmd BufRead,BufWrite * if ! &bin | silent! %s/\s\+$//ge | endif  " auto remove blank
-augroup END
-
-" function
-function! RenameFile()  " rename currentfile
+" 独自関数
+" Space + n でカレントファイル名変更
+function! RenameFile()
     let old = expand('%')
     let new = input('NewFileName : ', old , 'file')
     if new != '' && new != old
@@ -62,6 +58,3 @@ function! RenameFile()  " rename currentfile
         redraw!
     endif
 endfunction
-
-" run language
-nnoremap <buffer> <Leader>p :exec '!python' shellescape(@%, 1)<cr>
